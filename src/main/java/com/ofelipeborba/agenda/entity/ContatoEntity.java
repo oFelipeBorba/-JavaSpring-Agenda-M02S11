@@ -1,10 +1,7 @@
 package com.ofelipeborba.agenda.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -17,6 +14,7 @@ import java.util.Objects;
 @NoArgsConstructor
 public class ContatoEntity implements Serializable {
 
+    @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -32,22 +30,8 @@ public class ContatoEntity implements Serializable {
     @Column
     private String celular;
 
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_grupo")
     private GrupoEntity grupoEntity;
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ContatoEntity that = (ContatoEntity) o;
-        return id.equals(that.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }

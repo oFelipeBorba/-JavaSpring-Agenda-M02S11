@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Logback do Loggly ###
+src/main/resources/logback-spring.xml
